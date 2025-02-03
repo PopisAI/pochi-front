@@ -1,14 +1,8 @@
-import TokenView from '../TokenView'
-import AppBar from '../../components/Appbar'
+import AppRoutes from './AppRoutes'
 import './App.css'
 
 const App = () => {
-  return (
-    <>
-      <AppBar />
-      <div className="bg-green-400">Hello World!</div>
-    </>
-  )
+  return <AppRoutes />
 }
 
 export default App
