@@ -1,6 +1,9 @@
+import { useParams } from "react-router-dom"
+
 const TokenView = () => {
+  const { tokenId } =useParams()
   return (
-    <div>TokenView</div>
+    <div>TokenView: {tokenId}</div>
   )
 }
 

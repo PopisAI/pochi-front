@@ -6,13 +6,13 @@ import NotFound from '../NotFound'
 import TokenView from '../TokenView'
 
 const Routes = () => {
-  let routes = useRoutes([
+  const routes = useRoutes([
     {
       path: '/',
       element: <AppMain />, // Add AppBar
       children: [
         { element: <Home />, index: true },
-        { path: '/token', element: <TokenView /> },
+        { path: '/token/:tokenId', element: <TokenView /> },
         { path: '*', element: <NotFound /> },
       ],
     },
