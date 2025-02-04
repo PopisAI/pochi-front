@@ -1,20 +1,36 @@
+import { useEffect, useState } from "react"
+
+import { Token } from "@/types/Token"
+import { getTrendingTokens } from "@/services/api"
+
 const TokenCarousel = () => {
+  const [tokens, setTokens] = useState<Token[]>([])
+
+  useEffect(() => {
+    getTokens()
+  }, [])
+
+  const getTokens = async () => {
+    const _tokens = await getTrendingTokens()
+    setTokens(_tokens)
+  }
+
   return (
     <div className="carousel carousel-center space-x-4 p-4 w-full">
-      <div className="carousel-item">
+      {tokens.map((token: Token, i: number) =>( <div key={token.symbol} className="carousel-item">
         <div className="card glass">
           <figure className="h-48">
             <img
-              src="https://img.daisyui.com/images/stock/photo-1559703248-dcaaec9fab78.webp"
+              src={token.img}
               alt="POCHI"
             />
           </figure>
           <div className="card-body p-4">
-            <h3 className="card-title">PEPE</h3>
-            <p>How to park your car at your garage?</p>
+            <h3 className="card-title">{token.symbol}</h3>
+            <p>{`Price: $${token.price}`}</p>
           </div>
         </div>
-      </div>
+      </div>))}
     </div>
   )
 }

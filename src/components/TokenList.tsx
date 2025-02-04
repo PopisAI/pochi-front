@@ -1,13 +1,7 @@
-const tokens = [
-  { name: 'PhPop', symbol: 'PHPOP', price: '0.0001', h24: '+0.2%' },
-  { name: 'Pepe', symbol: 'PEPE', price: '0.02', h24: '+0.1%' },
-  { name: 'Other', symbol: 'PHPOP', price: '0.5', h24: '-0.2%' },
-]
-
 const TokenList = () => {
   return (
     <ul role="list" className="divide-y divide-gray-100">
-      {tokens.map((token) => (
+      {/* {tokens.map((token) => (
         <li key={token.symbol} className="flex justify-between gap-x-6 py-5">
           <div className="flex min-w-0 gap-x-4">
             <img
@@ -34,7 +28,7 @@ const TokenList = () => {
             )}
           </div>
         </li>
-      ))}
+      ))} */}
     </ul>
   )
 }
