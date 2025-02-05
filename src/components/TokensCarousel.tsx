@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import { Token } from "@/types/Token"
 import { getTrendingTokens } from "@/services/api"
 
-const TokenCarousel = () => {
+const TokensCarousel = () => {
   const [tokens, setTokens] = useState<Token[]>([])
 
   useEffect(() => {
@@ -35,4 +35,4 @@ const TokenCarousel = () => {
   )
 }
 
-export default TokenCarousel
+export default TokensCarousel
