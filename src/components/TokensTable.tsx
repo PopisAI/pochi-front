@@ -1,3 +1,5 @@
+import { useNavigate } from 'react-router-dom'
+
 import { Token } from '@/types/Token'
 
 interface TokensTableProps {
@@ -6,6 +8,8 @@ interface TokensTableProps {
   index?: number
 }
 const TokensTable = ({ tokens, className, index = 1 }: TokensTableProps) => {
+  const navigate = useNavigate()
+
   return (
     <div className={`overflow-x-auto ${className || ''}`}>
       <table className="table">
@@ -20,7 +24,7 @@ const TokensTable = ({ tokens, className, index = 1 }: TokensTableProps) => {
         </thead>
         <tbody>
           {tokens.map((token: Token, i: number) => (
-            <tr key={token.symbol} className="hover">
+            <tr key={token.symbol} className="hover:bg-base-200" onClick={() => navigate(`/tokens/${token.symbol}`)}>
               <td>{i + index}</td>
               <td>
                 <div className="flex items-center gap-3">

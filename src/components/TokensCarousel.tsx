@@ -20,7 +20,7 @@ const TokensCarousel = () => {
   return (
     <div className="carousel carousel-center space-x-4 p-4 w-full">
       {tokens.map((token: Token) => (
-        <a key={token.symbol} className="carousel-item" onClick={() => navigate(`/tokens/${token.symbol}`)}>
+        <div key={token.symbol} className="carousel-item transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-102" onClick={() => navigate(`/tokens/${token.symbol}`)}>
           <div className="card glass hover">
             <figure className="h-48">
               <img src={token.img} alt="POCHI" />
@@ -30,7 +30,7 @@ const TokensCarousel = () => {
               <p>{`Price: $${token.price}`}</p>
             </div>
           </div>
-        </a>
+        </div>
       ))}
     </div>
   )
