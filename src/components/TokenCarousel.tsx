@@ -18,7 +18,7 @@ const TokenCarousel = () => {
   return (
     <div className="carousel carousel-center space-x-4 p-4 w-full">
       {tokens.map((token: Token) =>( <div key={token.symbol} className="carousel-item">
-        <div className="card glass">
+        <div className="card glass hover">
           <figure className="h-48">
             <img
               src={token.img}

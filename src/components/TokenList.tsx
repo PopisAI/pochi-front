@@ -29,7 +29,7 @@ const TokenList = () => {
         </thead>
         <tbody>
           {tokens.map((token: Token, i: number) => (
-            <tr key={token.symbol}>
+            <tr key={token.symbol} className="hover">
               <td>{i + 1}</td>
               <td>
                 <div className="flex items-center gap-3">
