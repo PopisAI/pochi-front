@@ -6,7 +6,7 @@ export const getTrendingTokens = async (): Promise<Token[]> => {
 }
 
 export const getGainerTokens = async (): Promise<Token[]> => {
-  return demoTokens.reverse().map((token) => token as Token)
+  return demoTokens.map((token) => token as Token).reverse()
 }
 
 export const getTokenBySymbol = async (tSymbol: string): Promise<Token | null > => {

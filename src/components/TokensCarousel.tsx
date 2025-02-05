@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
-import { Token } from "@/types/Token"
-import { getTrendingTokens } from "@/services/api"
+import { Token } from '@/types/Token'
+import { getTrendingTokens } from '@/services/api'
 
 const TokensCarousel = () => {
+  const navigate = useNavigate()
   const [tokens, setTokens] = useState<Token[]>([])
 
   useEffect(() => {
@@ -17,20 +19,19 @@ const TokensCarousel = () => {
 
   return (
     <div className="carousel carousel-center space-x-4 p-4 w-full">
-      {tokens.map((token: Token) =>( <div key={token.symbol} className="carousel-item">
-        <div className="card glass hover">
-          <figure className="h-48">
-            <img
-              src={token.img}
-              alt="POCHI"
-            />
-          </figure>
-          <div className="card-body p-4">
-            <h3 className="card-title">{token.symbol}</h3>
-            <p>{`Price: $${token.price}`}</p>
+      {tokens.map((token: Token) => (
+        <a key={token.symbol} className="carousel-item" onClick={() => navigate(`/tokens/${token.symbol}`)}>
+          <div className="card glass hover">
+            <figure className="h-48">
+              <img src={token.img} alt="POCHI" />
+            </figure>
+            <div className="card-body p-4">
+              <h3 className="card-title">{token.symbol}</h3>
+              <p>{`Price: $${token.price}`}</p>
+            </div>
           </div>
-        </div>
-      </div>))}
+        </a>
+      ))}
     </div>
   )
 }
