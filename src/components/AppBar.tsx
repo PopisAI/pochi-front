@@ -8,16 +8,6 @@ const AppBar = () => {
         <li className='font-semibold text-lg'>
           <NavLink to="/">Pochi.po</NavLink>
         </li>
-        <li>
-          <NavLink to="/token/2" className={({ isActive }) => isActive ? activeStyle : undefined}>
-            Demo 1
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/token/1" className={({ isActive }) => isActive ? activeStyle : undefined}>
-            Demo 2
-          </NavLink>
-        </li>
       </ul>
       <ul className='flex items-center space-x-4'>
         <li>
