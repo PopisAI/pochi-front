@@ -4,4 +4,5 @@ export interface Token {
   price: number,
   img: string,
   h24?: string,
+  marketCap?: number,
 }
