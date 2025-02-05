@@ -28,15 +28,25 @@ const TokenList = () => {
           </tr>
         </thead>
         <tbody>
-          {tokens.map((token: Token) => (
+          {tokens.map((token: Token, i: number) => (
             <tr key={token.symbol}>
+              <td>{i + 1}</td>
               <td>
-                <img src={token.img} alt="POCHI" className="h-8 w-8" />
+                <div className="flex items-center gap-3">
+                  <div className="avatar">
+                    <div className="mask mask-squircle h-12 w-12">
+                      <img src={token.img} alt={token.symbol} />
+                    </div>
+                  </div>
+                  <div>
+                    <div className="font-bold">{token.name}</div>
+                    <div className="text-sm opacity-50">{token.symbol}</div>
+                  </div>
+                </div>
               </td>
-              <td>{token.symbol}</td>
               <td>{`$${token.price}`}</td>
               <td>{`${token.h24 || '0'}%`}</td>
-              <td>{`$${(token.marketCap || 0)/1000000}M`}</td>
+              <td>{`$${(token.marketCap || 0) / 1000000}M`}</td>
             </tr>
           ))}
         </tbody>
