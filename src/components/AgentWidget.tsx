@@ -1,8 +1,5 @@
 import { useRef, useState, useEffect, RefObject } from 'react'
 
-import AgentChatMessages from './AgentChatMessages'
-import { Message } from '@/types/Message'
-import { getChatHistory } from '@/services/agent'
 import AgentChat from './AgentChat'
 
 const useOutsideClick = (ref: RefObject<HTMLInputElement>, onOut: Function) => {
