@@ -1,0 +1,19 @@
+[
+  { "role": "bot", "message": "Hello, how can I help you?" },
+  { "role": "user", "message": "what token do yo recomend?" },
+  { "role": "bot", "message": "POCHI token is trending rigth now." },
+  { "role": "user", "message": "what is the price of POCHI token?" },
+  { "role": "bot", "message": "POCHI token is currently at $0.0001" },
+  { "role": "user", "message": "what is the market cap of POCHI token?" },
+  { "role": "bot", "message": "POCHI token has a market cap of $1,000,000" },
+  { "role": "user", "message": "what is the volume of POCHI token?" },
+  { "role": "bot", "message": "POCHI token has a volume of $100,000" },
+  { "role": "user", "message": "what is the circulating supply of POCHI token?" },
+  { "role": "bot", "message": "POCHI token has a circulating supply of 10,000,000,000" },
+  { "role": "user", "message": "what is the total supply of POCHI token?" },
+  { "role": "bot", "message": "POCHI token has a total supply of 100,000,000,000" },
+  { "role": "user", "message": "what is the website of POCHI token?" },
+  { "role": "bot", "message": "You can visit the website of POCHI token at https://pochi.com" },
+  { "role": "user", "message": "what is the contract address of POCHI token?" },
+  { "role": "bot", "message": "The contract address of POCHI token is 0x" }
+]
