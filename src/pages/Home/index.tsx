@@ -35,6 +35,7 @@ const Home = () => {
           </div>
         </div>
       </div>
+      <h2 className="text-2xl mx-8 mt-8 mb-4">Pochi Recomended</h2>
       <TokenCarousel />
       <div className="m-8">
         <TokenList />
