@@ -23,8 +23,8 @@ const TokensList = ({ rows = 2 }: TokensListProps) => {
   return (
     <>
       <div className="join mb-4">
-        <input className="join-item btn checked:btn-secondary" type="radio" defaultChecked name="options" aria-label="Trending" />
-        <input className="join-item btn" type="radio" name="options" aria-label="Top" />
+        <input className="join-item btn has-checked:btn-secondary" type="radio" defaultChecked name="options" aria-label="Trending" />
+        <input className="join-item btn has-checked:btn-secondary" type="radio" name="options" aria-label="Top" />
       </div>
       <div className="flex flex-row w-full justify-between">
         <TokensTable className="flex-1" tokens={tokens.length > 5 && rows > 1 ? tokens.slice(0,5) : tokens} />
