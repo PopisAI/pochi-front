@@ -28,7 +28,7 @@ const TokensList = ({ rows = 2 }: TokensListProps) => {
       </div>
       <div className="flex flex-row w-full justify-between">
         <TokensTable className="flex-1" tokens={tokens.length > 5 && rows > 1 ? tokens.slice(0,5) : tokens} />
-        {(tokens.length > 5 && rows > 1) && <TokensTable className="flex-1" tokens={tokens.slice(5,tokens.length)} index={6} />}
+        {(tokens.length > 5 && rows > 1) && <TokensTable className="flex-0 invisible md:visible md:flex-1" tokens={tokens.slice(5,tokens.length)} index={6} />}
       </div>
     </>
   )
