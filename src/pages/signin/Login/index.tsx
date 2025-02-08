@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react'
 
 const Login = () => {
   const navigate = useNavigate()
-  const [email, setEmail] = useState<string>('')
+  const [username, setUsername] = useState<string>('')
   const [password, setPassword] = useState<string>('')
   const { login, isAuthenticated } = useAuth()
 
@@ -16,9 +16,9 @@ const Login = () => {
   }, [isAuthenticated])
 
   const handleLogin = async () => {
-    if (!(password.length > 0 && email.length > 0 && email.includes('@')&& email.includes('.'))) return
+    if (!(password.length > 0 && username.length > 0 && username.includes('@')&& username.includes('.'))) return
 
-    const isAuth = await login(email, password)
+    const isAuth = await login(username, password)
     if (isAuth) navigate('/')
   }
 
@@ -35,9 +35,9 @@ const Login = () => {
               <input
                 type="text"
                 className="grow"
-                placeholder="Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
               />
             </label>
             <label className="input input-bordered flex items-center gap-2">

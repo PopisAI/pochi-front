@@ -6,15 +6,16 @@ import { loginService, logoutService, registerService } from '@/services/auth'
 const useAuth = () => {
   const { state, dispatch} = (useContext(AppContext) as AppState)
 
-  const login = async (email: string, password: string): Promise<boolean> => {
-    const user = await loginService(email, password)
+  const login = async (username: string, password: string): Promise<boolean> => {
+    const user = await loginService(username, password)
     dispatch({type: 'setAuth', payload: { isAuthenticaed: !!user, user: user } })
 
     return !!user
   }
 
-  const register = async (email: string, password: string): Promise<boolean> => {
-    const user = await registerService(email, password)
+  const register = async (username: string, password: string): Promise<boolean> => {
+    const user = await registerService(username, password)
+    console.log("🚀 ~ register ~ user:", user)
     dispatch({type: 'setAuth', payload: { isAuthenticaed: !!user, user: user } })
 
     return !!user

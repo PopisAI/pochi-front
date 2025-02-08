@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react'
 
 const Register = () => {
   const navigate = useNavigate()
-  const [email, setEmail] = useState<string>('')
+  const [username, setUsername] = useState<string>('')
   const [password, setPassword] = useState<string>('')
   const { register, isAuthenticated } = useAuth()
 
@@ -16,9 +16,10 @@ const Register = () => {
   }, [isAuthenticated])
 
   const handleRegister = async () => {
-    if (!(password.length > 0 && email.length > 0)) return
+    if (!(password.length > 0 && username.length > 0)) return
 
-    const isAuth = await register(email, password)
+    const isAuth = await register(username, password)
+    console.log("🚀 ~ handleRegister ~ isAuth:", isAuth)
     if (isAuth) navigate('/')
   }
 
@@ -35,9 +36,9 @@ const Register = () => {
               <input
                 type="text"
                 className="grow"
-                placeholder="Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
               />
             </label>
             <label className="input input-bordered flex items-center gap-2">
