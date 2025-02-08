@@ -8,22 +8,20 @@ const useAuth = () => {
 
   const login = async (username: string, password: string): Promise<boolean> => {
     const user = await loginService(username, password)
-    dispatch({type: 'setAuth', payload: { isAuthenticaed: !!user, user: user } })
+    dispatch({type: 'setAuth', payload: { user: user } })
 
     return !!user
   }
 
   const register = async (username: string, password: string): Promise<boolean> => {
     const user = await registerService(username, password)
-    console.log("🚀 ~ register ~ user:", user)
-    dispatch({type: 'setAuth', payload: { isAuthenticaed: !!user, user: user } })
 
     return !!user
   }
 
   const logout = async (): Promise<boolean> => {
     const _lo = await logoutService()
-    if (_lo) dispatch({type: 'setAuth', payload: { isAuthenticaed: false, user: null } })
+    if (_lo) dispatch({type: 'setAuth', payload: { user: null } })
 
     return _lo
 

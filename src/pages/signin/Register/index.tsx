@@ -19,8 +19,7 @@ const Register = () => {
     if (!(password.length > 0 && username.length > 0)) return
 
     const isAuth = await register(username, password)
-    console.log("🚀 ~ handleRegister ~ isAuth:", isAuth)
-    if (isAuth) navigate('/')
+    if (isAuth) navigate('/login')
   }
 
   return (

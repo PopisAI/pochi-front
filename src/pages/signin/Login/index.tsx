@@ -16,7 +16,7 @@ const Login = () => {
   }, [isAuthenticated])
 
   const handleLogin = async () => {
-    if (!(password.length > 0 && username.length > 0 && username.includes('@')&& username.includes('.'))) return
+    if (!(password.length > 0 && username.length > 0)) return
 
     const isAuth = await login(username, password)
     if (isAuth) navigate('/')
