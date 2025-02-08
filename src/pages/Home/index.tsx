@@ -1,5 +1,5 @@
-import TokensCarousel from '@/components/TokensCarousel'
-import TokensList from '@/components/TokensList'
+import TokensCarousel from '@/components/token/TokensCarousel'
+import TokensList from '@/components/token/TokensList'
 import { AIIcon } from '@/icons'
 
 const Home = () => {
