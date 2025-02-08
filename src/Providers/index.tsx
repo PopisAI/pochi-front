@@ -1,11 +1,14 @@
 import type { ReactNode } from 'react'
 import { WagmiProvider } from 'wagmi'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { base, baseSepolia } from 'wagmi/chains' // add baseSepolia for testing
+import { base, baseSepolia } from 'wagmi/chains'
 import { Auth0Provider } from '@auth0/auth0-react'
 import { http, createConfig } from 'wagmi'
 
 const queryClient = new QueryClient()
+
+const authDomain = import.meta.env.VITE_AUTH_DOMAIN
+const authClient = import.meta.env.VITE_AUTH_CLIENT
 
 export const config = createConfig({
   chains: [base, baseSepolia],
@@ -18,8 +21,8 @@ export const config = createConfig({
 const Providers = (props: { children: ReactNode }) => {
   return (
     <Auth0Provider
-      domain={'dev-n55rqj0rx4pskbzv.us.auth0.com'}
-      clientId={'VGDJYrWsB3RzJp4u0EnaxtIukIjvdQ26'}
+      domain={authDomain}
+      clientId={authClient}
       authorizationParams={{
         redirect_uri: window.location.origin,
       }}
