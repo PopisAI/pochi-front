@@ -1,27 +1,24 @@
-import { createContext, useReducer } from 'react'
+import { createContext, Dispatch, useReducer } from 'react'
 
-const AppContext = createContext({})
+import { User } from '@/types/User'
 
-enum ActionsKind {
-  setAuth = 'setAuth',
-}
-
-interface AppAction {
-  type: ActionsKind
-  payload: any
-}
+type AppAction = { type: 'setAuth'; payload: any } | { type: 'setOther'; payload: any }
 
 interface AppState {
-  user: {
-    id: string
-    emai: string
-  }
+  user: User | null
   isAuthenticated: boolean
 }
 
+interface CompleteState {
+  state: AppState
+  dispatch: Dispatch<AppAction>
+}
+
+const AppContext = createContext<CompleteState | null>(null)
+
 const reducer = (state: AppState, action: AppAction) => {
   switch (action.type) {
-    case ActionsKind.setAuth:
+    case 'setAuth':
       return {
         ...state,
         isAuthenticated: !!action.payload.user,
@@ -40,7 +37,7 @@ interface ContextProviderProps {
 
 const ContextProvider = ({ children }: ContextProviderProps) => {
   const [state, dispatch] = useReducer(reducer, {
-    user: undefined,
+    user: null,
     isAuthenticated: false,
   })
 
@@ -48,3 +45,4 @@ const ContextProvider = ({ children }: ContextProviderProps) => {
 }
 
 export { AppContext, ContextProvider, Consumer as AppConsumer }
+export type { CompleteState as AppState, AppAction }

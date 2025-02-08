@@ -1,13 +1,13 @@
 import { NavLink } from 'react-router-dom'
-import { useAuth0 } from '@auth0/auth0-react'
 import { useReadContract } from 'wagmi'
 
 import { popisContractConfig } from '@/services/contract'
+import useAuth from '@/hooks/useAuth'
 
 const activeStyle = 'underline underline-thickness-3 underline-offset-2'
 
 const AppBar = () => {
-  const { loginWithRedirect, logout, isAuthenticated } = useAuth0()
+  const { loginWithRedirect, logout, isAuthenticated } = useAuth()
   const { data: mCap, error, isPending } = useReadContract({
     ...popisContractConfig,
     functionName: 'getMarketCap',
