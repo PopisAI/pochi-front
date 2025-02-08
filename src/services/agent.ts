@@ -1,10 +1,27 @@
-import demoMessages from '@/data/messages.json'
+import axios from 'axios'
+
 import { Message } from '@/types/Message'
 
+const url = `${import.meta.env.VITE_ENV === 'local' ? 'http' : 'https'}://${import.meta.env.VITE_HOST_URL}`
+
 export const getChatHistory = async (): Promise<Message[]> => {
-  return demoMessages.map((msg) => msg as Message)
+  return []
 }
 
-export const sendMessageToAgent = async (msg: Message): Promise<void> => {
-  console.log('Sending message:', msg)
+export const sendMessageToAgent = async (msg: Message, token: string): Promise<Message> => {
+  const ai = await axios
+    .post(
+      `${url}/api/user-chat`,
+      { message: msg.message },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'content-type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+        },
+      }
+    )
+    .then((res) => res.data)
+
+  return { message: ai.response, role: 'bot' } as Message
 }

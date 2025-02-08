@@ -15,7 +15,7 @@ const AgentChatMessages = ({
 }: AgentChatProps) => {
   return (
     <div
-      className={`${className || ''} w-full bg-base-100 rounded-lg p-2 overflow-y-auto max-h-96`}
+      className={`${className || ''} w-full bg-base-100 rounded-lg p-2 overflow-y-auto min-h-48 max-h-96`}
     >
       {isAuthenticated ? (
         messages.map((msg: Message, i: number) => (

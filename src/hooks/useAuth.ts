@@ -24,7 +24,6 @@ const useAuth = () => {
     if (_lo) dispatch({type: 'setAuth', payload: { user: null } })
 
     return _lo
-
   }
 
   return { user: state?.user, isAuthenticated: state?.isAuthenticated, login, register, logout }

@@ -1,5 +1,6 @@
-import { User } from '@/types/User'
 import axios from 'axios'
+
+import { User } from '@/types/User'
 
 const url = `${import.meta.env.VITE_ENV === 'local' ? 'http' : 'https'}://${import.meta.env.VITE_HOST_URL}`
 

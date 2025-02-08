@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react'
 
-import { getChatHistory, sendMessageToAgent } from '@/services/agent'
-import { AIIcon, SendIcon } from '@/icons'
 import AgentChatMessages from './AgentChatMessages'
+import { getChatHistory } from '@/services/agent'
+import { useSendMessage } from '@/hooks/useAgent'
+import { AIIcon, SendIcon } from '@/icons'
 import { Message } from '@/types/Message'
 import useAuth from '@/hooks/useAuth'
 
@@ -12,13 +13,20 @@ interface AgentChatProps {
 }
 
 const AgentChat = ({ showChat = true, onInputFocus = undefined }: AgentChatProps) => {
-  const { isAuthenticated } = useAuth()
+  const { isAuthenticated, user } = useAuth()
+  const { agentMessage, sendMessageAgent } = useSendMessage()
   const [messages, setMessages] = useState<Message[]>([])
   const [message, setMessage] = useState<string>('')
 
   useEffect(() => {
     getHistory()
   }, [])
+
+  useEffect(() => {
+    if (agentMessage) {
+      setMessages([...messages, agentMessage])
+    }
+  }, [agentMessage])
 
   const getHistory = async () => {
     const _msgs = await getChatHistory()
@@ -30,13 +38,15 @@ const AgentChat = ({ showChat = true, onInputFocus = undefined }: AgentChatProps
 
     const msg: Message = {
       role: 'user',
-      message: message
+      message: message,
     }
 
-    await sendMessageToAgent(msg)
+    if (user) {
+      setMessages([...messages, msg])
+      setMessage('')
 
-    setMessages([...messages, msg])
-    setMessage('')
+      await sendMessageAgent(msg, user.token)
+    }
   }
 
   return (

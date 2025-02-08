@@ -4,9 +4,6 @@ import AgentChat from './AgentChat'
 
 const useOutsideClick = (ref: RefObject<HTMLInputElement>, onOut: Function) => {
   useEffect(() => {
-    /**
-     * Alert if clicked on outside of element
-     */
     const handleClickOutside = (event: MouseEvent) => {
       if (ref.current && !ref.current.contains(event.target as Node)) {
         onOut()
