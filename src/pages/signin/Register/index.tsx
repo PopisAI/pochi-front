@@ -15,8 +15,8 @@ const Register = () => {
     if (isAuthenticated) navigate('/')
   }, [isAuthenticated])
 
-  const handleLogin = async () => {
-    if (!(password.length > 0 && email.length > 0 && email.includes('@')&& email.includes('.'))) return
+  const handleRegister = async () => {
+    if (!(password.length > 0 && email.length > 0)) return
 
     const isAuth = await register(email, password)
     if (isAuth) navigate('/')
@@ -53,7 +53,7 @@ const Register = () => {
             <div className="card-actions">
               <button
                 className="btn btn-outline max-[380px]:btn-xs"
-                onClick={handleLogin}
+                onClick={handleRegister}
               >
                 Signup
               </button>

@@ -8,9 +8,6 @@ importers:
 
   .:
     dependencies:
-      '@auth0/auth0-react':
-        specifier: ^2.3.0
-        version: 2.3.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@tailwindcss/vite':
         specifier: ^4.0.3
         version: 4.0.3(vite@6.0.11(@types/node@22.13.1)(jiti@2.4.2)(lightningcss@1.29.1))
@@ -89,15 +86,6 @@ packages:
 
   '@adraffy/ens-normalize@1.11.0':
     resolution: {integrity: sha512-/3DDPKHqqIqxUULp8yP4zODUY1i+2xvVWsv8A79xGWdCAG+8sb0hRh0Rk2QyOJUnnbyPUAZYcpBuRe3nS2OIUg==}
-
-  '@auth0/auth0-react@2.3.0':
-    resolution: {integrity: sha512-YYTc/DWWigKC9fURufR/79h3+3DAnIzbfEzJLZ8Z4Q0BXE0azru3pKUbU+vYzS4lMAJkclwLuAbUnLjK81vCpA==}
-    peerDependencies:
-      react: ^16.11.0 || ^17 || ^18 || ^19
-      react-dom: ^16.11.0 || ^17 || ^18 || ^19
-
-  '@auth0/auth0-spa-js@2.1.3':
-    resolution: {integrity: sha512-NMTBNuuG4g3rame1aCnNS5qFYIzsTUV5qTFPRfTyYFS1feS6jsCBR+eTq9YkxCp1yuoM2UIcjunPaoPl77U9xQ==}
 
   '@babel/runtime@7.26.7':
     resolution: {integrity: sha512-AOPI3D+a8dXnja+iwsUqGRjr1BbZIe771sXdapOtYI531gSqpi92vXivKcq2asu/DFpdl1ceFAKZyRzK2PCVcQ==}
@@ -2485,14 +2473,6 @@ packages:
 snapshots:
 
   '@adraffy/ens-normalize@1.11.0': {}
-
-  '@auth0/auth0-react@2.3.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
-    dependencies:
-      '@auth0/auth0-spa-js': 2.1.3
-      react: 18.3.1
-      react-dom: 18.3.1(react@18.3.1)
-
-  '@auth0/auth0-spa-js@2.1.3': {}
 
   '@babel/runtime@7.26.7':
     dependencies:

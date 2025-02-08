@@ -1,5 +1,8 @@
 import demoUsers from '@/data/users.json'
 import { User } from '@/types/User'
+import axios from 'axios'
+
+const url = `${import.meta.env.VITE_ENV === 'local' ? 'http' : 'https'}://${import.meta.env.VITE_HOST_URL}`
 
 export const loginService = async (email: string, password: string): Promise<User | null> => {
   let user = null
@@ -15,13 +18,19 @@ export const loginService = async (email: string, password: string): Promise<Use
 }
 
 export const registerService = async (email: string, password: string): Promise<User | null> => {
-  console.log('New user', email, password)
-  const _users = demoUsers.filter(_u => _u.email === email)
+  const user = await axios
+    .post(
+      `${url}/api/register`,
+      { username: email, password },
+      { headers: { 'content-type': 'application/json', 'Access-Control-Allow-Origin': '*' } }
+    )
+    .then((res) => res.data)
+  console.log('User', user)
 
-  return _users.length > 0 ? _users[0] as User : null
+  return null
 }
 
 export const logoutService = async (): Promise<boolean> => {
-  await setTimeout(()=> {}, 500)
+  await setTimeout(() => {}, 500)
   return true
 }

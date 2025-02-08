@@ -8,12 +8,16 @@ const activeStyle = 'underline underline-thickness-3 underline-offset-2'
 
 const AppBar = () => {
   const { logout, isAuthenticated } = useAuth()
-  const { data: mCap, error, isPending } = useReadContract({
+  const {
+    data: mCap,
+    error,
+    isPending,
+  } = useReadContract({
     ...popisContractConfig,
     functionName: 'getMarketCap',
     args: [],
   })
-  console.log("🚀 ~ AppBar ~ Balance:", mCap, error, isPending)
+  console.log('🚀 ~ AppBar ~ Balance:', mCap, error, isPending)
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 bg-stone-100/90 text-gray-900">
@@ -72,13 +76,14 @@ const AppBar = () => {
                   </ul>
                 </div>
               ) : (
-                <NavLink
-                to="/login"
-              >
-                <button className="btn">
-                  Log In
-                </button>
-                </NavLink>
+                <>
+                  <NavLink to="/register">
+                    <button className="btn btn-outline mr-2">Register</button>
+                  </NavLink>
+                  <NavLink to="/login">
+                    <button className="btn mr-2">Log In</button>
+                  </NavLink>
+                </>
               )}
             </li>
           </ul>
