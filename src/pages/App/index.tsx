@@ -1,4 +1,4 @@
-import AgentWidget from '@/components/AgentWidget'
+import AgentWidget from '@/components/agent/AgentWidget'
 import AppRoutes from './AppRoutes'
 import './App.css'
 
