@@ -7,7 +7,8 @@ import { popisContractConfig, wagmiContractConfig } from '@/services/contract'
 const activeStyle = 'underline underline-thickness-3 underline-offset-2'
 
 const AppBar = () => {
-  const { loginWithRedirect } = useAuth0()
+  const { loginWithRedirect, logout, user, isAuthenticated } = useAuth0()
+  console.log('🚀 ~ AppBar ~ user:', user)
   // const { data: balance, error, isPending } = useReadContract({
   //   ...wagmiContractConfig,
   //   functionName: 'balanceOf',
@@ -33,7 +34,11 @@ const AppBar = () => {
         </ul>
         <ul className="flex items-center space-x-4">
           <li>
-            <button onClick={() => loginWithRedirect()}>Log In</button>
+            {isAuthenticated ? (
+              <button onClick={() => logout()}>Log Out</button>
+            ) : (
+              <button onClick={() => loginWithRedirect()}>Log In</button>
+            )}
           </li>
         </ul>
       </nav>
