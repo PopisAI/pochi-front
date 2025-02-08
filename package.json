@@ -11,6 +11,7 @@
     "prettier": "prettier --write */**/*.{js,jsx,json,ts,tsx,scss,css,md}"
   },
   "dependencies": {
+    "@auth0/auth0-react": "^2.3.0",
     "@tailwindcss/vite": "^4.0.3",
     "@tanstack/react-query": "^5.66.0",
     "axios": "^1.7.9",

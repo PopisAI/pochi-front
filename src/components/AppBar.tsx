@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router-dom'
+import { useAuth0 } from '@auth0/auth0-react'
 import { useReadContract } from 'wagmi'
 
 import { popisContractConfig, wagmiContractConfig } from '@/services/contract'
@@ -6,12 +7,13 @@ import { popisContractConfig, wagmiContractConfig } from '@/services/contract'
 const activeStyle = 'underline underline-thickness-3 underline-offset-2'
 
 const AppBar = () => {
-  const { data: balance, error, isPending } = useReadContract({
-    ...wagmiContractConfig,
-    functionName: 'balanceOf',
-    args: ['0x93a758c63CD7B15C8def570378E017ea0a2d7fd2'],
-  })
-  console.log("🚀 ~ AppBar ~ Balance:", balance, error, isPending)
+  const { loginWithRedirect } = useAuth0()
+  // const { data: balance, error, isPending } = useReadContract({
+  //   ...wagmiContractConfig,
+  //   functionName: 'balanceOf',
+  //   args: ['0x93a758c63CD7B15C8def570378E017ea0a2d7fd2'],
+  // })
+  // console.log("🚀 ~ AppBar ~ Balance:", balance, error, isPending)
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 bg-stone-100/90 text-gray-900">
@@ -30,7 +32,9 @@ const AppBar = () => {
           </li>
         </ul>
         <ul className="flex items-center space-x-4">
-          <li>Connect Wallet</li>
+          <li>
+            <button onClick={() => loginWithRedirect()}>Log In</button>
+          </li>
         </ul>
       </nav>
     </header>
