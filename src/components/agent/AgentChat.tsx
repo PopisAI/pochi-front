@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react'
 
-import AgentChatMessages from './AgentChatMessages'
-import { Message } from '@/types/Message'
 import { getChatHistory, sendMessageToAgent } from '@/services/agent'
 import { AIIcon, SendIcon } from '@/icons'
+import AgentChatMessages from './AgentChatMessages'
+import { Message } from '@/types/Message'
+import useAuth from '@/hooks/useAuth'
 
 interface AgentChatProps {
   showChat?: boolean
@@ -11,6 +12,7 @@ interface AgentChatProps {
 }
 
 const AgentChat = ({ showChat = true, onInputFocus = undefined }: AgentChatProps) => {
+  const { isAuthenticated } = useAuth()
   const [messages, setMessages] = useState<Message[]>([])
   const [message, setMessage] = useState<string>('')
 
@@ -41,6 +43,7 @@ const AgentChat = ({ showChat = true, onInputFocus = undefined }: AgentChatProps
     <>
       <AgentChatMessages
         className={`${showChat ? 'block opacity-100' : 'hidden opacity-0'} transition-all transition-discrete`}
+        isAuthenticated={isAuthenticated}
         messages={messages}
       />
       <label
@@ -55,7 +58,7 @@ const AgentChat = ({ showChat = true, onInputFocus = undefined }: AgentChatProps
           value={message}
           onChange={(event) => setMessage(event.target.value)}
         />
-        <button className="btn btn-circle" onClick={sendMessage}>
+        <button className="btn btn-circle" onClick={sendMessage} disabled={!isAuthenticated}>
           <SendIcon />
         </button>
       </label>

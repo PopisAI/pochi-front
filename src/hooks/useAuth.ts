@@ -4,7 +4,7 @@ import { AppContext, AppState } from '@/context'
 import { loginService, logoutService, registerService } from '@/services/auth'
 
 const useAuth = () => {
-  const { state: { user, isAuthenticated }, dispatch} = useContext(AppContext) as AppState
+  const { state, dispatch} = (useContext(AppContext) as AppState)
 
   const login = async (email: string, password: string): Promise<boolean> => {
     const user = await loginService(email, password)
@@ -28,7 +28,7 @@ const useAuth = () => {
 
   }
 
-  return { user, isAuthenticated, login, register, logout }
+  return { user: state?.user, isAuthenticated: state?.isAuthenticated, login, register, logout }
 }
 
 export default useAuth

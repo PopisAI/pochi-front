@@ -1,13 +1,12 @@
-import AgentWidget from '@/components/agent/AgentWidget'
+import Providers from '@/Providers'
 import AppRoutes from './AppRoutes'
 import './App.css'
 
 const App = () => {
   return (
-    <>
+    <Providers>
       <AppRoutes />
-      <AgentWidget />
-    </>
+    </Providers>
   )
 }
 

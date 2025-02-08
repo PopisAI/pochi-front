@@ -1,14 +1,15 @@
 import { Outlet } from 'react-router-dom'
 
-import Providers from '@/Providers'
 import AppBar from '@/components/AppBar'
+import AgentWidget from '@/components/agent/AgentWidget'
 
 const AppMain = () => {
   return (
-    <Providers>
+    <>
       <AppBar />
       <Outlet />
-    </Providers>
+      <AgentWidget />
+    </>
   )
 }
 
