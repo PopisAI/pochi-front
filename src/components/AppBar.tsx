@@ -7,7 +7,7 @@ import useAuth from '@/hooks/useAuth'
 const activeStyle = 'underline underline-thickness-3 underline-offset-2'
 
 const AppBar = () => {
-  const { loginWithRedirect, logout, isAuthenticated } = useAuth()
+  const { logout, isAuthenticated } = useAuth()
   const { data: mCap, error, isPending } = useReadContract({
     ...popisContractConfig,
     functionName: 'getMarketCap',
@@ -72,9 +72,13 @@ const AppBar = () => {
                   </ul>
                 </div>
               ) : (
-                <button className="btn" onClick={() => loginWithRedirect()}>
+                <NavLink
+                to="/login"
+              >
+                <button className="btn">
                   Log In
                 </button>
+                </NavLink>
               )}
             </li>
           </ul>

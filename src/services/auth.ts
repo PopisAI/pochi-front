@@ -1,5 +1,3 @@
-import { setTimeout } from "timers/promises"
-
 import demoUsers from '@/data/users.json'
 import { User } from '@/types/User'
 
@@ -24,6 +22,6 @@ export const registerService = async (email: string, password: string): Promise<
 }
 
 export const logoutService = async (): Promise<boolean> => {
-  await setTimeout(500)
+  await setTimeout(()=> {}, 500)
   return true
 }
