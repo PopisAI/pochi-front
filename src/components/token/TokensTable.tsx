@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 
 import { Token } from '@/types/Token'
+import FlagGenerated from '../FlagGenerated'
 
 interface TokensTableProps {
   tokens: Token[]
@@ -28,9 +29,9 @@ const TokensTable = ({ tokens, className, index = 1 }: TokensTableProps) => {
 
             return (
               <tr
-                key={token.symbol}
+                key={token.address}
                 className="hover:bg-base-200"
-                onClick={() => navigate(`/tokens/${token.address}`)}
+                onClick={() => navigate(`/tokens/${token.address}${token.id ? `?id=${token.id}` : ''}`)}
               >
                 <td>{i + index}</td>
                 <td>
@@ -42,7 +43,7 @@ const TokensTable = ({ tokens, className, index = 1 }: TokensTableProps) => {
                     </div>
                     <div>
                       <div className="font-bold">{token.name}</div>
-                      <div className="text-sm opacity-50">{token.symbol}</div>
+                      <div className="text-sm opacity-50">{token.symbol} {token?.id && <FlagGenerated />}</div>
                     </div>
                   </div>
                 </td>

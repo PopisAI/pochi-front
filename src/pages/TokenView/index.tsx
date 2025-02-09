@@ -3,7 +3,8 @@ import { useParams, useSearchParams } from 'react-router-dom'
 
 import Layout from '@/components/Layout'
 import { Token } from '@/types/Token'
-import { getTokenByAddress, getTokenById } from '@/services/api'
+import { getTokenByAddress } from '@/services/api'
+import FlagGenerated from '@/components/FlagGenerated'
 
 const TokenView = () => {
   const [token, setToken] = useState<Token | null>(null)
@@ -18,7 +19,7 @@ const TokenView = () => {
   }, [tokenSymbol])
 
   const getToken = async (id: string | null, address: string) => {
-    const _tokens = await (id ? getTokenById(id) : getTokenByAddress(address))
+    const _tokens = await getTokenByAddress(address, id)
 
     setToken(_tokens)
   }
@@ -37,34 +38,46 @@ const TokenView = () => {
           </div>
         </div>
         <div className="flex-1">
-          <div className="card bg-neutral-800 h-83 shadow-xl mt-14">
+          <div className="card bg-neutral-800 min-h-83 shadow-xl mt-14">
             <div className="card-body">
-              <h2 className="card-title">About {token?.symbol}</h2>
+              <h2 className="card-title">
+                About {token?.symbol}{' '}
+                {token?.id && <FlagGenerated />}
+              </h2>
               {/** Price */}
               <div className="flex my-4">
-                <p className="text-neutral-400 text-lg font-semibold w-1">Price:</p>
-                <p className="text-lg">{`$${token?.price || '...'}`}</p>
+                <p className="flex-1 text-neutral-400 text-lg font-semibold w-1">Price:</p>
+                <p className="flex-3 text-lg">{`$${token?.price || '...'}`}</p>
               </div>
               {/** 24h */}
               <div className="flex mb-4">
-                <p className="text-neutral-400 text-lg font-semibold w-1">24h:</p>
-                <p className="text-lg">{`%${token?.h24 || 0}`}</p>
+                <p className="flex-1 text-neutral-400 text-lg font-semibold w-1">24h:</p>
+                <p className="flex-3 text-lg">{`${token?.h24 || 0}%`}</p>
               </div>
               {/** Market Cap */}
               <div className="flex mb-4">
-                <p className="text-neutral-400 text-lg font-semibold w-1">Market cap:</p>
-                <p className="text-lg">{`$${marketCap > 100000 ? `${(marketCap / 1000000).toFixed(4)}M` : marketCap > 100 ? `${(marketCap / 1000).toFixed(4)}K` : marketCap.toFixed(4)}`}</p>
+                <p className="flex-1 text-neutral-400 text-lg font-semibold w-1">Market cap:</p>
+                <p className="flex-3 text-lg">{`$${marketCap > 100000 ? `${(marketCap / 1000000).toFixed(4)}M` : marketCap > 100 ? `${(marketCap / 1000).toFixed(4)}K` : marketCap.toFixed(4)}`}</p>
               </div>
               {/** Date Created */}
               <div className="flex mb-4">
-                <p className="text-neutral-400 text-lg font-semibold w-1">Created:</p>
-                <p className="text-lg">{`5d ago`}</p>
+                <p className="flex-1 text-neutral-400 text-lg font-semibold w-1">Created:</p>
+                <p className="flex-3 text-lg">{`5d ago`}</p>
               </div>
               {/** Address */}
               <div className="flex mb-4">
-                <p className="text-neutral-400 text-lg font-semibold w-1">Address:</p>
-                <p className="text-lg">{token?.address}</p>
+                <p className="flex-1 text-neutral-400 text-lg font-semibold w-1">Address:</p>
+                <p className="flex-3 truncate text-lg">{token?.address}</p>
               </div>
+              {/** Address */}
+              {token?.tweet_related_link && <div className="flex mb-4">
+                <p className="flex-1 text-neutral-400 text-ellipsis text-lg font-semibold w-1">Original Tweet:</p>
+                <a className="flex-3 truncate text-lg" href={token?.tweet_related_link} target="_blank">{token?.tweet_related_link}</a>
+              </div>}
+              {token?.agent_explanation && <div className="flex mb-4">
+                <p className="flex-1 text-neutral-400 text-lg font-semibold">Explanation:</p>
+                <p className="flex-3 text-ellipsis text-lg">{token?.agent_explanation}</p>
+              </div>}
             </div>
           </div>
         </div>
