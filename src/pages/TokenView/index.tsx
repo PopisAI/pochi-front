@@ -59,11 +59,11 @@ const TokenView = () => {
                 <p className="text-neutral-400 text-lg font-semibold w-1">Created:</p>
                 <p className="text-lg">{`5d ago`}</p>
               </div>
-              {/** Contract Address */}
-              {token?.contract_address ? <div className="flex mb-4">
-                <p className="text-neutral-400 text-lg font-semibold w-1">Contract:</p>
-                <p className="text-lg">{token.contract_address}</p>
-              </div> : null}
+              {/** Address */}
+              <div className="flex mb-4">
+                <p className="text-neutral-400 text-lg font-semibold w-1">Address:</p>
+                <p className="text-lg">{token?.address}</p>
+              </div>
             </div>
           </div>
         </div>
