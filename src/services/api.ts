@@ -17,7 +17,7 @@ const getRandomImg = () => {
 export const getMoonTokens = async (viewId: string): Promise<Token[]> => {
   const tokens = await axios
     .get(`${url_moon}/tokens/v1/${viewId}/basesepolia`, {
-      headers: { 'content-type': 'application/json charset=utf-8', 'Access-Control-Allow-Origin': '*' },
+      headers: { 'content-type': 'application/json charset=utf-8' },
     })
     .then((res) => res.data)
 
@@ -37,14 +37,18 @@ export const getMoonTokens = async (viewId: string): Promise<Token[]> => {
 
 export const getPochiTokens = async (): Promise<Token[]> => {
   const tokens = await axios
-    .get(`${url}/tokens`, {})
+    .get(`${url}/tokens`, {
+      headers: { 'content-type': 'application/json' },
+    })
     .then((res) => res.data)
 
   return tokens.map((token: any) => ({ ...token, address: token.contract_address, img: getRandomImg(), }) as Token)
 }
 const getPochiTokensAddress = async (): Promise<any> => {
   const tokens = await axios
-    .get(`${url}/tokens`, {})
+    .get(`${url}/tokens`, {
+      headers: { 'content-type': 'application/json'},
+    })
     .then((res) => res.data)
 
   let _pochis: any = {}
@@ -58,7 +62,7 @@ const getPochiTokensAddress = async (): Promise<any> => {
 export const getTokenByAddress = async (address: string, id: string | null): Promise<Token | null> => {
   const token = await axios
     .get(`${url_moon}/token/v1/basesepolia/${address}:moon`, {
-      headers: { 'content-type': 'application/json charset=utf-8', 'Access-Control-Allow-Origin': '*' },
+      headers: { 'content-type': 'application/json charset=utf-8' },
     })
     .then((res) => res.data)
 
@@ -84,7 +88,9 @@ export const getTokenByAddress = async (address: string, id: string | null): Pro
 const getTokenById = async (id: string): Promise<SeudoToken | null> => {
   if (id ===  null) return null
   const token = await axios
-    .get(`${url}/tokens/${id}`, {})
+    .get(`${url}/tokens/${id}`, {
+      headers: { 'content-type': 'application/json' },
+    })
     .then((res) => res.data)
 
     return token as SeudoToken

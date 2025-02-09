@@ -9,7 +9,7 @@ export const loginService = async (username: string, password: string): Promise<
     .post(
       `${url}/api/login`,
       { username, password },
-      { headers: { 'content-type': 'application/json', 'Access-Control-Allow-Origin': '*' } }
+      { headers: { 'content-type': 'application/json' } }
     )
     .then((res) => res.data)
 
@@ -21,7 +21,7 @@ export const registerService = async (username: string, password: string): Promi
     .post(
       `${url}/api/register`,
       { username, password },
-      { headers: { 'content-type': 'application/json', 'Access-Control-Allow-Origin': '*' } }
+      { headers: { 'content-type': 'application/json' } }
     )
     .then((res) => res.data)
 

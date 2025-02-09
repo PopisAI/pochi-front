@@ -17,7 +17,6 @@ export const sendMessageToAgent = async (msg: Message, token: string): Promise<M
         headers: {
           Authorization: `Bearer ${token}`,
           'content-type': 'application/json',
-          'Access-Control-Allow-Origin': '*',
         },
       }
     )
