@@ -35,7 +35,7 @@ export const getPochiTokens = async (): Promise<Token[]> => {
     })
     .then((res) => res.data)
 
-  return tokens.map((token: any) => ({ ...token, img: demoTokens[getRandomInt(demoTokens.length)].img }) as Token)
+  return tokens.map((token: any) => ({ ...token, address: token.contract_address, img: demoTokens[getRandomInt(demoTokens.length)].img }) as Token)
 }
 
 export const getTokenByAddress = async (address: string): Promise<Token | null> => {
