@@ -7,17 +7,18 @@ import { getTokenByAddress, getTokenById } from '@/services/api'
 
 const TokenView = () => {
   const [token, setToken] = useState<Token | null>(null)
-  const [searchParams] = useSearchParams();
+  const [searchParams] = useSearchParams()
   const { tokenSymbol } = useParams()
 
   useEffect(() => {
-    if (tokenSymbol){
-      const tokenId =searchParams.get('id')
-      getToken(tokenId, tokenSymbol)}
+    if (tokenSymbol) {
+      const tokenId = searchParams.get('id')
+      getToken(tokenId, tokenSymbol)
+    }
   }, [tokenSymbol])
 
   const getToken = async (id: string | null, address: string) => {
-    const _tokens = await(id ? getTokenById(id) : getTokenByAddress(address))
+    const _tokens = await (id ? getTokenById(id) : getTokenByAddress(address))
 
     setToken(_tokens)
   }
@@ -26,7 +27,7 @@ const TokenView = () => {
   return (
     <Layout>
       <div className="container mx-auto flex flex-col md:flex-row space-x-8">
-        <div className='flex flex-col items-center md:items-baseline'>
+        <div className="flex flex-col items-center md:items-baseline">
           <p className="text-[12px] text-neutral-500">{token?.symbol}</p>
           <h2 className="text-2xl mb-2">{token?.name}</h2>
           <div className="card image-full w-64 shadow-md" style={{ display: 'block' }}>
@@ -47,12 +48,12 @@ const TokenView = () => {
               {/** 24h */}
               <div className="flex mb-4">
                 <p className="text-neutral-400 text-lg font-semibold w-1">24h:</p>
-                <p className="text-lg">{`%${token?.h24  || 0}`}</p>
+                <p className="text-lg">{`%${token?.h24 || 0}`}</p>
               </div>
               {/** Market Cap */}
               <div className="flex mb-4">
                 <p className="text-neutral-400 text-lg font-semibold w-1">Market cap:</p>
-                <p className="text-lg">{`$${ marketCap > 100000 ? `${marketCap/1000000}M` : (marketCap > 100 ? `${marketCap/1000}K` : marketCap) }`}</p>
+                <p className="text-lg">{`$${marketCap > 100000 ? `${(marketCap / 1000000).toFixed(4)}M` : marketCap > 100 ? `${(marketCap / 1000).toFixed(4)}K` : marketCap.toFixed(4)}`}</p>
               </div>
               {/** Date Created */}
               <div className="flex mb-4">
