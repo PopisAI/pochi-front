@@ -27,7 +27,7 @@ const TokensCarousel = () => {
               <img src={token.img} alt="POCHI" />
             </figure>
             <div className="card-body max-w-48 p-4">
-              <h3 className="card-title">{token.symbol} {token?.id && <FlagGenerated size={10} />}</h3>
+              <h3 className="card-title">{token.symbol} {token?.id && <FlagGenerated />}</h3>
               <p className='truncate w-full'>{token.price ? `Price: $${token.price}` : token.description}</p>
             </div>
           </div>
