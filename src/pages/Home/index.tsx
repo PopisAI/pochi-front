@@ -16,10 +16,14 @@ const Home = () => {
               Engage with our agent to keep track of the current and the next meme coins!
             </p>
             <div className="card-actions">
-              <button className="btn btn-secondary max-[380px]:btn-xs">
-                Chat with Pochi
+              <a
+                href="https://x.com/PochiPo1589473"
+                target="_blank"
+                className="btn btn-secondary max-[380px]:btn-xs"
+              >
+                PochiPO Insights
                 <AIIcon />
-              </button>
+              </a>
             </div>
           </div>
         </div>

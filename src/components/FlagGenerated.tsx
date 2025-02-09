@@ -1,8 +1,8 @@
 import pochiSvg from '/pochi.svg'
-const FlagGenerated = ({ size = 8 }: { size?: number}) => {
+const FlagGenerated = () => {
   return (
     <div className="tooltip tooltip-right" data-tip="PochiPo generated">
-      <img className={`w-${size.toString()}`} src={pochiSvg} alt="Pochi" />
+      <img className={`w-8`} src={pochiSvg} alt="Pochi" />
     </div>
   )
 }
