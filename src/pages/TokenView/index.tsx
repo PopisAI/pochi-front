@@ -3,7 +3,7 @@ import { useParams, useSearchParams } from 'react-router-dom'
 
 import Layout from '@/components/Layout'
 import { Token } from '@/types/Token'
-import { getTokenBySymbol, getTokenById } from '@/services/api'
+import { getTokenByAddress, getTokenById } from '@/services/api'
 
 const TokenView = () => {
   const [token, setToken] = useState<Token | null>(null)
@@ -16,12 +16,13 @@ const TokenView = () => {
       getToken(tokenId, tokenSymbol)}
   }, [tokenSymbol])
 
-  const getToken = async (id: string | null, symbol: string) => {
-    const _tokens = await(id ? getTokenById(id) : getTokenBySymbol(symbol))
+  const getToken = async (id: string | null, address: string) => {
+    const _tokens = await(id ? getTokenById(id) : getTokenByAddress(address))
 
     setToken(_tokens)
   }
 
+  const marketCap = token?.marketCap || 0
   return (
     <Layout>
       <div className="container mx-auto flex flex-col md:flex-row space-x-8">
@@ -46,12 +47,12 @@ const TokenView = () => {
               {/** 24h */}
               <div className="flex mb-4">
                 <p className="text-neutral-400 text-lg font-semibold w-1">24h:</p>
-                <p className="text-lg">{`${token?.h24  || 'Unknown'}`}</p>
+                <p className="text-lg">{`%${token?.h24  || 'Unknown'}`}</p>
               </div>
               {/** Market Cap */}
               <div className="flex mb-4">
                 <p className="text-neutral-400 text-lg font-semibold w-1">Market cap:</p>
-                <p className="text-lg">{`$${(token?.marketCap || 0)/1000000}M`}</p>
+                <p className="text-lg">{`$${ marketCap > 100000 ? `${marketCap/1000000}M` : (marketCap > 100 ? `${marketCap/1000}K` : marketCap) }`}</p>
               </div>
               {/** Date Created */}
               <div className="flex mb-4">

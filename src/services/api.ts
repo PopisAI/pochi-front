@@ -18,7 +18,7 @@ export const getMoonTokens = async (viewId: string): Promise<Token[]> => {
     .then((res) => res.data)
 
   return tokens.map((token: any) => ({ 
-    adrress: token.baseToken.address,
+    address: token.baseToken.address,
     name: token.baseToken.name, 
     symbol: token.baseToken.symbol,
     marketCap: token.marketCap,
@@ -38,17 +38,22 @@ export const getPochiTokens = async (): Promise<Token[]> => {
   return tokens.map((token: any) => ({ ...token, img: demoTokens[getRandomInt(demoTokens.length)].img }) as Token)
 }
 
-export const getTokenBySymbol = async (tSymbol: string): Promise<Token | null> => {
-  let token = null
+export const getTokenByAddress = async (address: string): Promise<Token | null> => {
+  const tokens = await axios
+    .get(`${url_moon}/token/v1/basesepolia/${address}:moon`, {
+      headers: { 'content-type': 'application/json charset=utf-8', 'Access-Control-Allow-Origin': '*' },
+    })
+    .then((res) => res.data)
 
-  for (let i = 0; i < demoTokens.length; i++) {
-    if (demoTokens[i].symbol === tSymbol) {
-      token = demoTokens[i]
-      break
-    }
-  }
-
-  return token as Token
+  return tokens.map((token: any) => ({ 
+    address: token.baseToken.address,
+    name: token.baseToken.name, 
+    symbol: token.baseToken.symbol,
+    marketCap: token.marketCap,
+    price: token.priceUsd,
+    img: token.profile?.icon,
+    description: token.profile?.description,
+  }) as Token)
 }
 
 
