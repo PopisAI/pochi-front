@@ -23,7 +23,7 @@ export const getMoonTokens = async (viewId: string): Promise<Token[]> => {
     symbol: token.baseToken.symbol,
     marketCap: token.marketCap,
     price: token.priceUsd,
-    img: token.profile?.icon,
+    img: demoTokens[getRandomInt(demoTokens.length)].img,,
     description: token.profile?.description,
   }) as Token)
 }
@@ -51,7 +51,7 @@ export const getTokenByAddress = async (address: string): Promise<Token | null> 
     symbol: token.baseToken.symbol,
     marketCap: token.marketCap,
     price: token.priceUsd,
-    img: token.profile?.icon,
+    img: demoTokens[getRandomInt(demoTokens.length)].img,
     description: token.profile?.description,
   } as Token
 }
