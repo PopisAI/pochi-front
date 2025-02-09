@@ -63,7 +63,7 @@ PRs welcome! If you have cool ideas, feel free to open an issue or hit us up on 
 
 ## Authors
 - [Diego Parra](https://github.com/divait)
-- [Luis River](https://github.com/LuisRivera1699)
+- [Luis Rivera](https://github.com/LuisRivera1699)
 
 ---
 
