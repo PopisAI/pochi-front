@@ -4,7 +4,7 @@ import demoTokens from '@/data/tokens.json'
 import { Token } from '@/types/Token'
 
 const url = `${import.meta.env.VITE_ENV === 'local' ? 'http' : 'https'}://${import.meta.env.VITE_HOST_URL}/api`
-const url_moon = `https://${import.meta.env.VITE_HOST_URL_MOON}/api`
+const url_moon = `https://${import.meta.env.VITE_HOST_URL_MOON}`
 
 const getRandomInt = (max: number) => {
   return Math.floor(Math.random() * max)
