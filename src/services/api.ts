@@ -65,5 +65,5 @@ export const getTokenById = async (id: string): Promise<Token | null> => {
     })
     .then((res) => res.data)
 
-    return ({ ...token, img: demoTokens[getRandomInt(demoTokens.length)].img }) as Token
+    return ({ ...token, address: token.contract_address, img: demoTokens[getRandomInt(demoTokens.length)].img }) as Token
 }

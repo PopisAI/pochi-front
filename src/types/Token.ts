@@ -7,6 +7,5 @@ export interface Token {
   img: string,
   h24?: number,
   marketCap?: number,
-  contract_address?: string,
   description?: string,
 }
