@@ -23,7 +23,7 @@ export const getMoonTokens = async (viewId: string): Promise<Token[]> => {
     symbol: token.baseToken.symbol,
     marketCap: token.marketCap,
     price: token.priceUsd,
-    img: demoTokens[getRandomInt(demoTokens.length)].img,,
+    img: demoTokens[getRandomInt(demoTokens.length)].img,
     description: token.profile?.description,
   }) as Token)
 }
