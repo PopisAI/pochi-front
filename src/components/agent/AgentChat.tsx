@@ -42,14 +42,10 @@ const AgentChat = ({ showChat = true, onInputFocus = undefined }: AgentChatProps
     }
 
     if (user) {
-      addmessage(msg)
+      setMessages([...messages, msg])
+      setMessage('')
       await sendMessageAgent(msg, user.token)
     }
-  }
-
-  const addmessage = (msg: Message) => {
-    setMessages([...messages, msg])
-      setMessage('')
   }
 
   return (
