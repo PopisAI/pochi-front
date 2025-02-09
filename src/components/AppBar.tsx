@@ -22,7 +22,7 @@ const AppBar = () => {
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 bg-stone-100/90 text-gray-900">
-      <nav className="flex justify-between items-center p-4 w-full">
+      <nav className="flex justify-between items-center p-3 w-full">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost md:hidden">
@@ -30,7 +30,7 @@ const AppBar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm bg-neutral-100 dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+              className="menu menu-sm bg-neutral-100 dropdown-content rounded-box z-[1] mt-3 w-52 p-2 shadow"
             >
               <li>
                 <NavLink to="/about">About</NavLink>
@@ -40,8 +40,8 @@ const AppBar = () => {
               </li>
             </ul>
           </div>
-          <NavLink className="font-semibold text-xl" to="/">
-            Pochi.po
+          <NavLink className="font-semibold text-xl ml-2 md:ml-4" to="/">
+            <img src="/pochipologo.svg" alt="Banner" className="h-8" />
           </NavLink>
         </div>
         <div className="navbar-center hidden md:flex">
