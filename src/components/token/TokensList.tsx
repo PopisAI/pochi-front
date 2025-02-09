@@ -23,9 +23,9 @@ const TokensList = ({ rows = 2 }: TokensListProps) => {
 
   return (
     <>
-      <div className="join mb-4">
+      <div className="join mb-4 min-w-48">
         <input
-          className="join-item btn base-400 has-checked:btn-secondary"
+          className="join-item btn turncate base-400 has-checked:btn-secondary"
           type="radio"
           checked={option === 'trending'}
           onClick={() => setOption('trending')}

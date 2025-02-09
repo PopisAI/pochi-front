@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom'
 
 // import { popisContractConfig } from '@/services/contract'
 import useAuth from '@/hooks/useAuth'
+import { MenuIcon } from '@/icons'
 
 const activeStyle = 'underline underline-thickness-3 underline-offset-2'
 
@@ -23,11 +24,27 @@ const AppBar = () => {
     <header className="fixed inset-x-0 top-0 z-50 bg-stone-100/90 text-gray-900">
       <nav className="flex justify-between items-center p-4 w-full">
         <div className="navbar-start">
+          <div className="dropdown">
+            <div tabIndex={0} role="button" className="btn btn-ghost md:hidden">
+              <MenuIcon />
+            </div>
+            <ul
+              tabIndex={0}
+              className="menu menu-sm bg-neutral-100 dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+            >
+              <li>
+                <NavLink to="/about">About</NavLink>
+              </li>
+              <li>
+                <NavLink to="/tokens">Tokens</NavLink>
+              </li>
+            </ul>
+          </div>
           <NavLink className="font-semibold text-xl" to="/">
             Pochi.po
           </NavLink>
         </div>
-        <div className="navbar-center">
+        <div className="navbar-center hidden md:flex">
           <ul className="flex items-center space-x-4">
             <li className="text-md">
               <NavLink
