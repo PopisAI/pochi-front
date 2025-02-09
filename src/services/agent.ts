@@ -23,7 +23,5 @@ export const sendMessageToAgent = async (msg: Message, token: string): Promise<M
     )
     .then((res) => res.data)
 
-  console.log('🚀 ~ sendMessageToAgent ~ ai', ai)
-
   return { message: ai.response, role: 'bot' } as Message
 }
