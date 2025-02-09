@@ -29,7 +29,6 @@ const AgentWidget = () => {
   useOutsideClick(mainRef, hideChat)
 
   const handleOnFocus = () => {
-    console.log('focus')
     setShowChat(true)
   }
 
