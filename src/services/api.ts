@@ -39,13 +39,13 @@ export const getPochiTokens = async (): Promise<Token[]> => {
 }
 
 export const getTokenByAddress = async (address: string): Promise<Token | null> => {
-  const tokens = await axios
+  const token = await axios
     .get(`${url_moon}/token/v1/basesepolia/${address}:moon`, {
       headers: { 'content-type': 'application/json charset=utf-8', 'Access-Control-Allow-Origin': '*' },
     })
     .then((res) => res.data)
 
-  return tokens.map((token: any) => ({ 
+  return { 
     address: token.baseToken.address,
     name: token.baseToken.name, 
     symbol: token.baseToken.symbol,
@@ -53,7 +53,7 @@ export const getTokenByAddress = async (address: string): Promise<Token | null> 
     price: token.priceUsd,
     img: token.profile?.icon,
     description: token.profile?.description,
-  }) as Token)
+  } as Token
 }
 
 
