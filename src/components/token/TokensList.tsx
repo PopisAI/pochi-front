@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 
 import { Token } from '@/types/Token'
-import { getGainerTokens, getTrendingTokens } from '@/services/api'
+import { getMoonTokens } from '@/services/api'
 import TokensTable from './TokensTable'
 
 interface TokensListProps {
@@ -17,7 +17,7 @@ const TokensList = ({ rows = 2 }: TokensListProps) => {
   }, [option])
 
   const getTokens = async () => {
-    const _tokens = await (option === 'top' ? getGainerTokens() : getTrendingTokens())
+    const _tokens = await getMoonTokens(option)
     setTokens(_tokens)
   }
 

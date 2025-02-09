@@ -3,23 +3,34 @@ import axios from 'axios'
 import demoTokens from '@/data/tokens.json'
 import { Token } from '@/types/Token'
 
-const url = `${import.meta.env.VITE_ENV === 'local' ? 'http' : 'https'}://${import.meta.env.VITE_HOST_URL}`
+const url = `${import.meta.env.VITE_ENV === 'local' ? 'http' : 'https'}://${import.meta.env.VITE_HOST_URL}/api`
+const url_moon = `https://${import.meta.env.VITE_HOST_URL_MOON}/api`
 
 const getRandomInt = (max: number) => {
   return Math.floor(Math.random() * max)
 }
 
-export const getTrendingTokens = async (): Promise<Token[]> => {
-  return demoTokens.map((token) => token as Token)
-}
+export const getMoonTokens = async (viewId: string): Promise<Token[]> => {
+  const tokens = await axios
+    .get(`${url_moon}/tokens/v1/${viewId}/basesepolia`, {
+      headers: { 'content-type': 'application/json charset=utf-8', 'Access-Control-Allow-Origin': '*' },
+    })
+    .then((res) => res.data)
 
-export const getGainerTokens = async (): Promise<Token[]> => {
-  return demoTokens.map((token) => token as Token).reverse()
+  return tokens.map((token: any) => ({ 
+    adrress: token.baseToken.address,
+    name: token.baseToken.name, 
+    symbol: token.baseToken.symbol,
+    marketCap: token.marketCap,
+    price: token.priceUsd,
+    img: token.profile.icon,
+    description: token.profile.description,
+  }) as Token)
 }
 
 export const getPochiTokens = async (): Promise<Token[]> => {
   const tokens = await axios
-    .get(`${url}/api/tokens`, {
+    .get(`${url}/tokens`, {
       headers: { 'content-type': 'application/json', 'Access-Control-Allow-Origin': '*' },
     })
     .then((res) => res.data)
@@ -44,7 +55,7 @@ export const getTokenBySymbol = async (tSymbol: string): Promise<Token | null> =
 export const getTokenById = async (id: string): Promise<Token | null> => {
   if (id ===  null) return null
   const token = await axios
-    .get(`${url}/api/tokens/${id}`, {
+    .get(`${url}/tokens/${id}`, {
       headers: { 'content-type': 'application/json', 'Access-Control-Allow-Origin': '*' },
     })
     .then((res) => res.data)

@@ -4,7 +4,7 @@ export interface Token {
   symbol: string,
   price?: number,
   img: string,
-  h24?: string,
+  h24?: number,
   marketCap?: number,
   contract_address?: string,
   description?: string,
