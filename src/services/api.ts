@@ -37,18 +37,14 @@ export const getMoonTokens = async (viewId: string): Promise<Token[]> => {
 
 export const getPochiTokens = async (): Promise<Token[]> => {
   const tokens = await axios
-    .get(`${url}/tokens`, {
-      headers: { 'content-type': 'application/json', 'Access-Control-Allow-Origin': '*' },
-    })
+    .get(`${url}/tokens`, {})
     .then((res) => res.data)
 
   return tokens.map((token: any) => ({ ...token, address: token.contract_address, img: getRandomImg(), }) as Token)
 }
 const getPochiTokensAddress = async (): Promise<any> => {
   const tokens = await axios
-    .get(`${url}/tokens`, {
-      headers: { 'content-type': 'application/json', 'Access-Control-Allow-Origin': '*' },
-    })
+    .get(`${url}/tokens`, {})
     .then((res) => res.data)
 
   let _pochis: any = {}
@@ -88,9 +84,7 @@ export const getTokenByAddress = async (address: string, id: string | null): Pro
 const getTokenById = async (id: string): Promise<SeudoToken | null> => {
   if (id ===  null) return null
   const token = await axios
-    .get(`${url}/tokens/${id}`, {
-      headers: { 'content-type': 'application/json', 'Access-Control-Allow-Origin': '*' },
-    })
+    .get(`${url}/tokens/${id}`, {})
     .then((res) => res.data)
 
     return token as SeudoToken
