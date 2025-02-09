@@ -42,11 +42,14 @@ const AgentChat = ({ showChat = true, onInputFocus = undefined }: AgentChatProps
     }
 
     if (user) {
-      setMessages([...messages, msg])
-      setMessage('')
-
+      addmessage(msg)
       await sendMessageAgent(msg, user.token)
     }
+  }
+
+  const addmessage = (msg: Message) => {
+    setMessages([...messages, msg])
+      setMessage('')
   }
 
   return (
@@ -67,6 +70,9 @@ const AgentChat = ({ showChat = true, onInputFocus = undefined }: AgentChatProps
           placeholder="Want to by some tokens?"
           value={message}
           onChange={(event) => setMessage(event.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') sendMessage()
+          }}
         />
         <button className="btn btn-circle" onClick={sendMessage} disabled={!isAuthenticated}>
           <SendIcon />

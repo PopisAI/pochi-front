@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react'
 import { NavLink } from 'react-router-dom'
 
 import { Message } from '@/types/Message'
@@ -13,6 +14,12 @@ const AgentChatMessages = ({
   isAuthenticated = false,
   messages = [],
 }: AgentChatProps) => {
+  const myRef = useRef<HTMLDivElement>(null)
+  useEffect(() => {
+    myRef.current?.scrollIntoView({
+      behavior: 'smooth',
+    })
+  }, [messages])
   return (
     <div
       className={`${className || ''} w-full bg-base-100 rounded-lg p-2 overflow-y-auto min-h-48 max-h-96`}
@@ -25,6 +32,7 @@ const AgentChatMessages = ({
             >
               {msg.message}
             </div>
+            <span ref={myRef}/>
           </div>
         ))
       ) : (
