@@ -47,7 +47,7 @@ const TokenView = () => {
               {/** 24h */}
               <div className="flex mb-4">
                 <p className="text-neutral-400 text-lg font-semibold w-1">24h:</p>
-                <p className="text-lg">{`%${token?.h24  || 'Unknown'}`}</p>
+                <p className="text-lg">{`%${token?.h24  || 0}`}</p>
               </div>
               {/** Market Cap */}
               <div className="flex mb-4">
