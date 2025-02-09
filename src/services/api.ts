@@ -70,7 +70,6 @@ export const getTokenByAddress = async (address: string, id: string | null): Pro
   if(id) {
     _token = await getTokenById(id)
   }
-  console.log('aaaaa', id, _token)
 
   return { 
     address: token.baseToken.address,
