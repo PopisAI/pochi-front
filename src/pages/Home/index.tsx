@@ -4,7 +4,7 @@ import { AIIcon } from '@/icons'
 
 const Home = () => {
   return (
-    <div className="w-full">
+    <div className="w-full mb-48">
       <div className="relative isolate">
         <img src="/banner.png" alt="Banner" className="w-full mt-14 sm:mt-0 h-auto" />
         <div className="card absolute left-0 ml-[7%] w-[40%] top-2/5 -translate-y-1/4 p-0 md:-translate-y-1/2 md:p-4 bg-base-100">
