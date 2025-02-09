@@ -1,20 +1,24 @@
 import { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useSearchParams } from 'react-router-dom'
 
 import Layout from '@/components/Layout'
 import { Token } from '@/types/Token'
-import { getTokenBySymbol } from '@/services/api'
+import { getTokenBySymbol, getTokenById } from '@/services/api'
 
 const TokenView = () => {
   const [token, setToken] = useState<Token | null>(null)
-  const { tokenId } = useParams()
+  const [searchParams] = useSearchParams();
+  const { tokenSymbol } = useParams()
 
   useEffect(() => {
-    if (tokenId) getToken(tokenId)
-  }, [tokenId])
+    if (tokenSymbol){
+      const tokenId =searchParams.get('id')
+      getToken(tokenId, tokenSymbol)}
+  }, [tokenSymbol])
 
-  const getToken = async (symbol: string) => {
-    const _tokens = await getTokenBySymbol(symbol)
+  const getToken = async (id: string | null, symbol: string) => {
+    const _tokens = await(id ? getTokenById(id) : getTokenBySymbol(symbol))
+
     setToken(_tokens)
   }
 
@@ -37,12 +41,12 @@ const TokenView = () => {
               {/** Price */}
               <div className="flex my-4">
                 <p className="text-neutral-400 text-lg font-semibold w-1">Price:</p>
-                <p className="text-lg">{`$${token?.price}`}</p>
+                <p className="text-lg">{`$${token?.price || '...'}`}</p>
               </div>
               {/** 24h */}
               <div className="flex mb-4">
                 <p className="text-neutral-400 text-lg font-semibold w-1">24h:</p>
-                <p className="text-lg">{`${token?.h24}`}</p>
+                <p className="text-lg">{`${token?.h24  || 'Unknown'}`}</p>
               </div>
               {/** Market Cap */}
               <div className="flex mb-4">
@@ -54,6 +58,11 @@ const TokenView = () => {
                 <p className="text-neutral-400 text-lg font-semibold w-1">Created:</p>
                 <p className="text-lg">{`5d ago`}</p>
               </div>
+              {/** Contract Address */}
+              {token?.contract_address ? <div className="flex mb-4">
+                <p className="text-neutral-400 text-lg font-semibold w-1">Contract:</p>
+                <p className="text-lg">{token.contract_address}</p>
+              </div> : null}
             </div>
           </div>
         </div>

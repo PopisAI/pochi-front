@@ -24,7 +24,7 @@ const TokensTable = ({ tokens, className, index = 1 }: TokensTableProps) => {
         </thead>
         <tbody>
           {tokens.map((token: Token, i: number) => (
-            <tr key={token.symbol} className="hover:bg-base-200" onClick={() => navigate(`/tokens/${token.symbol}`)}>
+            <tr key={token.symbol} className="hover:bg-base-200" onClick={() => navigate(`/tokens/${token.symbol}${token.id ? `?id=${token.id}` : ''}`)}>
               <td>{i + index}</td>
               <td>
                 <div className="flex items-center gap-3">

@@ -18,7 +18,7 @@ const Routes = () => {
         { path: '/login', element: <Login /> },
         { path: '/register', element: <Register /> },
         { path: '/tokens', element: <Tokens /> },
-        { path: '/tokens/:tokenId', element: <TokenView /> },
+        { path: '/tokens/:tokenSymbol', element: <TokenView /> },
         { path: '*', element: <NotFound /> },
       ],
     },
