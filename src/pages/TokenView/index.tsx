@@ -33,7 +33,7 @@ const TokenView = () => {
           <h2 className="text-2xl mb-2">{token?.name}</h2>
           <div className="card image-full w-64 shadow-md" style={{ display: 'block' }}>
             <figure>
-              <img src={token?.img} alt={token?.symbol} />
+              <img className='min-h-60' src={token?.img} alt={token?.symbol} />
             </figure>
           </div>
         </div>
